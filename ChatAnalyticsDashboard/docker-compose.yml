@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./Server
+    ports:
+      - "32811:8080"
+      - "32810:8081"
+    networks:
+      - my-network
+
+  client:
+    build: ./Client
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - server
+    networks:
+      - my-network
+
+networks:
+  my-network:
