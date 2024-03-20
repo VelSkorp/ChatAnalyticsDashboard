@@ -1,0 +1,55 @@
+﻿@using Newtonsoft.Json.Linq
+@{
+	ViewData["Title"] = "Table";
+
+	var totalChats = (JObject)ViewBag.TotalChats["records"];
+	var pageSize = 7;
+	var pageNumberString = ViewContext.HttpContext.Request.Query["page"].FirstOrDefault() ?? "1";
+	var pageNumber = Convert.ToInt32(pageNumberString);
+	var startIndex = (pageNumber - 1) * pageSize;
+	var pagedRecords = totalChats.Properties().Skip(startIndex).Take(pageSize);
+}
+
+<h1>Data Table</h1>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Total Chats</th>
+			<th>Duration</th>
+			<th>Ratings</th>
+			<th>Response Time</th>
+			<th>Tags</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var record in pagedRecords)
+		{
+			<tr>
+				<td>@record.Name</td>
+				<td>@ViewBag.TotalChats["records"][record.Name]?["total"]</td>
+				<td>@ViewBag.Duration["records"][record.Name]?["duration"]</td>
+				<td>@ViewBag.Ratings["records"][record.Name]?["good"]</td>
+				<td>@ViewBag.ResponseTime["records"][record.Name]?["response_time"]</td>
+				<td>
+					@foreach (var tag in ViewBag.Tags["records"][record.Name])
+					{
+						<p>@tag.Name: @tag.Value</p>
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<nav aria-label="Page navigation">
+	<ul class="pagination">
+		@for (int i = 1; i <= Math.Ceiling((double)totalChats.Count / pageSize); i++)
+		{
+			<li class="page-item @(i == pageNumber ? "active" : "")">
+				<a class="page-link" href="?page=@i">@i</a>
+			</li>
+		}
+	</ul>
+</nav>

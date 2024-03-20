@@ -1,0 +1,109 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+	font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.table th, .table td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.table th {
+	background-color: #f2f2f2;
+	color: #333;
+}
+
+.table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 8px 16px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+	background-color: #007bff;
+	color: #fff;
+}
+
+.btn:hover {
+	background-color: #0056b3;
+}
+
+.btn-table {
+	background-color: #28a745;
+}
+
+.btn-table:hover {
+	background-color: #218838;
+}
+
+.btn-nav1 {
+	background-color: #ffc107;
+}
+
+.btn-nav1:hover {
+	background-color: #e0a800;
+}
+
+.btn-nav2 {
+	background-color: #17a2b8;
+}
+
+.btn-nav2:hover {
+	background-color: #138496;
+}
+
+.btn-nav3 {
+	background-color: #dc3545;
+}
+
+.btn-nav3:hover {
+	background-color: #c82333;
+}
